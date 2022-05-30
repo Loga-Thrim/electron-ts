@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question App</title>
+    <link rel="stylesheet" href="../public/index.css" />
+  </head>
+  <body>
+    <h1>Please check the questions</h1>
+
+    <div id="app" class="container">
+      <div
+        v-for="question in questions"
+        class="content-box"
+        @click="getAnswer(question)"
+      >
+        <span>{{question.question}}</span>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <!-- Vue -->
+    <script>
+      const { createApp } = Vue;
+      const { ipcRenderer } = require("electron");
+
+      createApp({
+        data() {
+          return {
+            questions: [
+              {
+                question: "What your name ?",
+                answer: "Aphinant Chatchanthuek",
+              },
+              {
+                question: "How old are you ?",
+                answer: 21,
+              },
+              {
+                question: "What is your job ?",
+                answer: "Software Engineer",
+              },
+              {
+                question: "What is your hobby ?",
+                answer: "Programming",
+              },
+              {
+                question: "What is your favorite programming language ?",
+                answer: "C and Javascript",
+              },
+            ],
+          };
+        },
+        methods: {
+          getAnswer(question) {
+            ipcRenderer.send("question:get", question.answer);
+          },
+        },
+        mounted() {
+          ipcRenderer.on("question:add", (e, question) => {
+            this.questions.push(question);
+          });
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

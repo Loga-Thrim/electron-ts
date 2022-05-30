@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  font-family: "MesloLGLDZ NF";
+}
+
+h1{
+    padding: 10px 0;
+    margin-left: 5px;
+}
+
+.container {
+  background: rgb(228, 228, 228);
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+  padding: 10px 5px;
+}
+
+.content-box {
+  background: orange;
+  color: white;
+  font-weight: bold;
+  padding: 20px 5px;
+  font-size: 1rem;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.content-box:hover {
+  background: rgb(255, 182, 48);
+}

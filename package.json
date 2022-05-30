@@ -1,0 +1,16 @@
+{
+  "name": "begin-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc -p . && electron dist/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^18.2.3",
+    "typescript": "^4.6.4"
+  }
+}
